@@ -1,0 +1,38 @@
+{
+  "name": "commerce-search-engine",
+  "version": "0.1.0",
+  "private": true,
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "next dev --turbopack -H 127.0.0.1 -p 3200",
+    "build": "next build",
+    "start": "next start -H 127.0.0.1 -p 3200",
+    "lint": "eslint .",
+    "indexing:worker": "node scripts/indexing-worker.mjs",
+    "vectorize:goods": "node --env-file=.env.local scripts/vectorize-goods.mjs",
+    "demo:setup": "node scripts/setup-demo.mjs",
+    "demo:seed": "node --env-file=.env.local scripts/seed-demo.mjs",
+    "test:demo": "node --test tests/demo-source.test.mjs",
+    "demo:changes": "node --env-file=.env.local scripts/queue-demo-changes.mjs",
+    "test:integration": "node --env-file=.env.local tests/demo-integration.mjs"
+  },
+  "dependencies": {
+    "@elastic/elasticsearch": "9.5.0",
+    "next": "16.3.5",
+    "next-auth": "4.24.15",
+    "node-cron": "^4.6.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "eslint": "^9.39.1",
+    "eslint-config-next": "16.3.5",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.3"
+  }
+}

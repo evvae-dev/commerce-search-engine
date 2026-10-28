@@ -1,0 +1,34 @@
+{
+  "notice": "직접 만든 가상 상품입니다. 브랜드, 상품 번호, 가격, 판매 지표는 예제 값입니다.",
+  "brands": [
+    { "id": "9001", "name": "모던리프", "english": "MODERN LEAF" },
+    { "id": "9002", "name": "스튜디오블룸", "english": "STUDIO BLOOM" },
+    { "id": "9003", "name": "데일리루프", "english": "DAILY LOOP" }
+  ],
+  "products": [
+    { "id": "DEMO0001", "brand": "9001", "name": "울 블렌드 테일러드 재킷", "category": "재킷", "categoryId": "101", "price": 89000, "color": "네이비", "season": "가을", "description": "차분한 출근룩과 비즈니스룩을 위한 기본 재킷" },
+    { "id": "DEMO0002", "brand": "9002", "name": "린넨 여름 재킷", "category": "재킷", "categoryId": "101", "price": 79000, "color": "베이지", "season": "여름", "description": "더운 날에도 가볍게 걸치는 통기성 좋은 린넨 아우터" },
+    { "id": "DEMO0003", "brand": "9003", "name": "오버핏 데님 재킷", "category": "재킷", "categoryId": "101", "price": 69000, "color": "블루", "season": "봄", "description": "주말 나들이에 편안하게 입는 캐주얼 청재킷" },
+    { "id": "DEMO0004", "brand": "9001", "name": "플리츠 미디 원피스", "category": "원피스", "categoryId": "102", "price": 99000, "color": "블랙", "season": "가을", "description": "차분한 주름과 미디 기장의 하객룩 원피스" },
+    { "id": "DEMO0005", "brand": "9002", "name": "플라워 쉬폰 원피스", "category": "원피스", "categoryId": "102", "price": 59000, "color": "핑크", "season": "여름", "description": "휴가와 데이트에 어울리는 가벼운 꽃무늬 원피스" },
+    { "id": "DEMO0006", "brand": "9003", "name": "코튼 셔츠 원피스", "category": "원피스", "categoryId": "102", "price": 49000, "color": "화이트", "season": "봄", "description": "면 소재로 만든 편안한 일상용 셔츠 드레스" },
+    { "id": "DEMO0007", "brand": "9001", "name": "캐시미어 라운드 니트", "category": "니트", "categoryId": "103", "price": 119000, "color": "아이보리", "season": "겨울", "description": "부드럽고 따뜻한 겨울 출근용 스웨터" },
+    { "id": "DEMO0008", "brand": "9002", "name": "스트라이프 반팔 니트", "category": "니트", "categoryId": "103", "price": 39000, "color": "블루", "season": "여름", "description": "줄무늬 포인트가 있는 가벼운 여름 상의" },
+    { "id": "DEMO0009", "brand": "9003", "name": "케이블 집업 가디건", "category": "니트", "categoryId": "103", "price": 59000, "color": "그레이", "season": "가을", "description": "쌀쌀한 날 걸치는 여유로운 핏의 가디건" },
+    { "id": "DEMO0010", "brand": "9001", "name": "와이드 정장 슬랙스", "category": "팬츠", "categoryId": "104", "price": 69000, "color": "블랙", "season": "가을", "description": "재킷과 함께 입기 좋은 출근용 와이드 팬츠" },
+    { "id": "DEMO0011", "brand": "9002", "name": "린넨 밴딩 팬츠", "category": "팬츠", "categoryId": "104", "price": 45000, "color": "베이지", "season": "여름", "description": "허리 밴딩으로 편안한 여름 휴가 바지" },
+    { "id": "DEMO0012", "brand": "9003", "name": "스트레이트 데님 팬츠", "category": "팬츠", "categoryId": "104", "price": 55000, "color": "블루", "season": "봄", "description": "티셔츠와 쉽게 매치하는 기본 일자 청바지" },
+    { "id": "DEMO0013", "brand": "9001", "name": "더블 버튼 울 코트", "category": "코트", "categoryId": "105", "price": 249000, "color": "카멜", "season": "겨울", "description": "정장 위에 입기 좋은 따뜻한 롱 코트" },
+    { "id": "DEMO0014", "brand": "9002", "name": "벨티드 트렌치 코트", "category": "코트", "categoryId": "105", "price": 139000, "color": "베이지", "season": "가을", "description": "간절기 비즈니스룩을 완성하는 벨트 코트" },
+    { "id": "DEMO0015", "brand": "9003", "name": "후드 숏 패딩", "category": "패딩", "categoryId": "106", "price": 89000, "color": "그레이", "season": "겨울", "description": "겨울 산책과 일상에 입는 짧은 기장의 패딩" },
+    { "id": "DEMO0016", "brand": "9001", "name": "실크 타이 블라우스", "category": "블라우스", "categoryId": "107", "price": 79000, "color": "아이보리", "season": "봄", "description": "목선의 타이 장식이 있는 격식 있는 상의" },
+    { "id": "DEMO0017", "brand": "9002", "name": "퍼프 소매 블라우스", "category": "블라우스", "categoryId": "107", "price": 49000, "color": "핑크", "season": "여름", "description": "데이트룩에 어울리는 풍성한 소매와 산뜻한 색상" },
+    { "id": "DEMO0018", "brand": "9003", "name": "옥스퍼드 코튼 셔츠", "category": "셔츠", "categoryId": "108", "price": 39000, "color": "화이트", "season": "봄", "description": "청바지와 슬랙스에 모두 어울리는 기본 면 셔츠" },
+    { "id": "DEMO0019", "brand": "9001", "name": "에이치라인 미디 스커트", "category": "스커트", "categoryId": "109", "price": 69000, "color": "네이비", "season": "가을", "description": "단정한 오피스룩을 위한 일자핏 치마" },
+    { "id": "DEMO0020", "brand": "9002", "name": "플리츠 롱 스커트", "category": "스커트", "categoryId": "109", "price": 55000, "color": "베이지", "season": "봄", "description": "걸을 때 자연스럽게 퍼지는 긴 주름 치마" },
+    { "id": "DEMO0021", "brand": "9003", "name": "베이직 코튼 티셔츠", "category": "티셔츠", "categoryId": "110", "price": 19000, "color": "화이트", "season": "여름", "description": "매일 입기 좋은 기본 반팔 면 티셔츠" },
+    { "id": "DEMO0022", "brand": "9003", "name": "오버핏 후드 티셔츠", "category": "티셔츠", "categoryId": "110", "price": 39000, "color": "그레이", "season": "가을", "description": "편안한 주말과 여행을 위한 넉넉한 후드 상의" },
+    { "id": "DEMO0023", "brand": "9001", "name": "테일러드 린넨 재킷", "category": "재킷", "categoryId": "101", "price": 99000, "color": "아이보리", "season": "여름", "description": "여름에도 단정하게 입을 수 있는 린넨 정장 재킷" },
+    { "id": "DEMO0024", "brand": "9002", "name": "브이넥 니트 원피스", "category": "원피스", "categoryId": "102", "price": 79000, "color": "네이비", "season": "겨울", "description": "따뜻한 소재와 깔끔한 실루엣의 겨울 드레스" }
+  ]
+}

@@ -1,0 +1,10 @@
+[
+  { "memberNo": "1001", "source": "cart", "goodsId": "DEMO0001" },
+  { "memberNo": "1001", "source": "recent", "goodsId": "DEMO0010" },
+  { "memberNo": "1001", "source": "wish", "goodsId": "DEMO0023" },
+  { "memberNo": "1001", "source": "order", "goodsId": "DEMO0013" },
+  { "memberNo": "1002", "source": "cart", "goodsId": "DEMO0005" },
+  { "memberNo": "1002", "source": "recent", "goodsId": "DEMO0017" },
+  { "memberNo": "1002", "source": "wish", "goodsId": "DEMO0020" },
+  { "memberNo": "1002", "source": "order", "goodsId": "DEMO0024" }
+]

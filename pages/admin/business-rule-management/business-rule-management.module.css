@@ -1,0 +1,326 @@
+.container {
+  max-width: 1360px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 24px;
+  color: #0f172a;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 22px;
+}
+.header h1 {
+  margin: 0 0 6px;
+  font-size: 27px;
+}
+.header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+}
+.tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 16px;
+}
+.tabs button {
+  min-width: 190px;
+  padding: 11px 16px;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  background: #fff;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 750;
+  cursor: pointer;
+}
+.tabs button:first-child {
+  border-radius: 8px 0 0 8px;
+}
+.tabs button:last-child {
+  border-radius: 0 8px 8px 0;
+}
+.tabs .active {
+  border-color: #4f46e5;
+  color: #fff;
+  background: #4f46e5;
+}
+.card {
+  overflow: hidden;
+  border: 1px solid #dbe3ef;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 1px 3px rgb(15 23 42 / 0.05);
+}
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 18px;
+  border-bottom: 1px solid #e2e8f0;
+}
+.toolbar strong {
+  font-size: 12px;
+}
+.toolbar button,
+.dialogActions button,
+.products button,
+.rowActions button,
+.dialogHeader button {
+  padding: 8px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  color: #334155;
+  background: #fff;
+  font: inherit;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.toolbar button,
+.dialogActions button:last-child {
+  border-color: #4f46e5;
+  color: #fff;
+  background: #4f46e5;
+}
+.tableWrapper {
+  overflow-x: auto;
+}
+.ruleTable {
+  width: 100%;
+  min-width: 980px;
+  border-collapse: collapse;
+}
+.ruleTable th,
+.ruleTable td {
+  padding: 13px 16px;
+  border-bottom: 1px solid #eef2f7;
+  text-align: left;
+  font-size: 11px;
+  vertical-align: middle;
+}
+.ruleTable th {
+  color: #475569;
+  background: #f8fafc;
+  font-weight: 800;
+}
+.ruleTable td > strong,
+.ruleTable td > small {
+  display: block;
+}
+.ruleTable td > small {
+  margin-top: 4px;
+  color: #94a3b8;
+}
+.boost,
+.penalty {
+  display: inline-flex;
+  margin-left: 9px;
+  padding: 3px 6px;
+  border-radius: 5px;
+  font-size: 10px;
+}
+.boost {
+  color: #047857;
+  background: #ecfdf5;
+}
+.penalty {
+  color: #b91c1c;
+  background: #fef2f2;
+}
+.productRule {
+  display: block;
+  margin-bottom: 3px;
+}
+.status {
+  display: inline-flex;
+  padding: 4px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 800;
+}
+.running {
+  color: #047857;
+  background: #ecfdf5;
+}
+.scheduled {
+  color: #1d4ed8;
+  background: #eff6ff;
+}
+.ended,
+.inactive {
+  color: #64748b;
+  background: #f1f5f9;
+}
+.rowActions {
+  display: flex;
+  gap: 6px;
+}
+.rowActions .deleteButton,
+.products .deleteButton {
+  border-color: #fecaca;
+  color: #b91c1c;
+  background: #fff7f7;
+}
+.empty {
+  padding: 38px !important;
+  color: #94a3b8;
+  text-align: center !important;
+}
+.errorBanner {
+  margin-bottom: 14px;
+  padding: 10px 13px;
+  border: 1px solid #fecaca;
+  border-radius: 7px;
+  color: #991b1b;
+  background: #fef2f2;
+  font-size: 12px;
+}
+.modalBackdrop {
+  position: fixed;
+  z-index: 100;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgb(15 23 42 / 0.48);
+}
+.dialog {
+  width: min(760px, 100%);
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 24px 60px rgb(15 23 42 / 0.3);
+}
+.dialogHeader {
+  position: sticky;
+  z-index: 2;
+  top: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 20px 22px;
+  border-bottom: 1px solid #e2e8f0;
+  background: #fff;
+}
+.dialogHeader h2 {
+  margin: 0 0 4px;
+  font-size: 18px;
+}
+.dialogHeader p {
+  margin: 0;
+  color: #64748b;
+  font-size: 11px;
+}
+.dialogHeader button {
+  padding: 4px 9px;
+  font-size: 18px;
+}
+.dialog > .errorBanner {
+  margin: 16px 22px 0;
+}
+.formGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px 18px;
+  padding: 20px 22px;
+}
+.formGrid label {
+  display: grid;
+  gap: 6px;
+  color: #334155;
+  font-size: 11px;
+  font-weight: 750;
+}
+.formGrid input,
+.formGrid select {
+  box-sizing: border-box;
+  width: 100%;
+  height: 38px;
+  padding: 0 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  background: #fff;
+  font: inherit;
+}
+.formGrid input:focus,
+.formGrid select:focus {
+  border-color: #6366f1;
+  outline: none;
+  box-shadow: 0 0 0 3px rgb(99 102 241 / 0.12);
+}
+.formGrid input:disabled {
+  color: #64748b;
+  background: #f1f5f9;
+}
+.formGrid .checkboxLabel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.formGrid .checkboxLabel input {
+  width: 16px;
+  height: 16px;
+  padding: 0;
+}
+.full {
+  grid-column: 1 / -1;
+}
+.products {
+  display: grid;
+  gap: 9px;
+}
+.products > div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.productRow {
+  display: grid;
+  grid-template-columns: 1fr 110px auto;
+  gap: 8px;
+}
+.dialogActions {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 14px 22px;
+  border-top: 1px solid #e2e8f0;
+  background: #fff;
+}
+.dialogActions button:disabled,
+.products button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+@media (max-width: 760px) {
+  .container {
+    padding: 14px;
+  }
+  .header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .tabs button {
+    min-width: 0;
+    flex: 1;
+  }
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+  .full {
+    grid-column: auto;
+  }
+  .productRow {
+    grid-template-columns: 1fr 90px;
+  }
+  .productRow button {
+    grid-column: 1 / -1;
+  }
+}

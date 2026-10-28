@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="300" viewBox="0 0 240 300">
+  <rect width="240" height="300" rx="12" fill="#f0f2f5"/>
+  <path d="M88 58 54 78 30 137 63 150 80 117 80 232 160 232 160 117 177 150 210 137 186 78 152 58 140 78 100 78Z" fill="#69839a" stroke="#3b5367" stroke-width="4"/>
+  <path d="m100 78 20 32 20-32M120 110v122" fill="none" stroke="#d8e1e9" stroke-width="3"/>
+  <text x="120" y="272" text-anchor="middle" font-family="sans-serif" font-size="13" fill="#3b5367">DEMO PRODUCT</text>
+</svg>

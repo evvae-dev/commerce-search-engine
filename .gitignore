@@ -1,0 +1,25 @@
+/node_modules
+/.next
+/out
+/coverage
+
+.env*
+!.env.example
+!.env.production.example
+
+*.tsbuildinfo
+next-env.d.ts
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+
+# 로컬 가상 상품 DB 및 실행 결과
+/.demo/
+/test-results/
+/playwright-report/
+*.log
+*.pem
+*.key
+*.p12
+*.pfx

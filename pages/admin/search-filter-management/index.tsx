@@ -1,0 +1,34 @@
+import type { GetServerSideProps } from 'next';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import Head from '../../../components/admin/admin-page-head';
+import { useAdminWorkspace } from '../../../components/admin/admin-workspace';
+import AdminLayout from '../../../components/layout/admin-layout';
+import { getGoodsIndex } from '../../../constant/goods-index.constant.mjs';
+import { getAdminPageSession } from '../../../service/admin-auth';
+import type { SearchFilterRule } from '../../../service/search-filter-evaluator';
+import styles from './search-filter-management.module.css';
+
+export const getServerSideProps: GetServerSideProps<{ email: string }> = async (context) => { const admin = await getAdminPageSession(context); return admin ? { props: { email: admin.email } } : { redirect: { destination: '/login', permanent: false } }; };
+type Preview = { remainingQuery: string; matchedRules: unknown[] };
+const fieldDraft = (targetIndex: string): SearchFilterRule => ({ id: `field-${Date.now()}`, name: '', targetIndex, kind: 'field', field: 'up_disp_clsf_nm.keyword', matchType: 'prefix', detectionTerms: [], values: [], status: 'active' });
+
+export default function SearchFilterManagementPage({ email }: { email: string }) {
+  const { environment } = useAdminWorkspace(); const targetIndex = getGoodsIndex(environment);
+  const [rules, setRules] = useState<SearchFilterRule[]>([]); const [revision, setRevision] = useState<{ seqNo?: number; primaryTerm?: number }>({});
+  const formRef = useRef<HTMLFormElement>(null); const [preview, setPreview] = useState<Preview | null>(null); const [loading, setLoading] = useState(true); const [saving, setSaving] = useState(false); const [error, setError] = useState('');
+  const load = useCallback(async () => { setLoading(true); setError(''); setPreview(null); try { const response = await fetch(`/api/v1/admin/search-filter-config?targetIndex=${encodeURIComponent(targetIndex)}`, { cache: 'no-store' }); const body = await response.json(); if (!response.ok) throw new Error(body.errorMessage); setRules(body.config?.rules || []); setRevision({ seqNo: body.config?.seqNo, primaryTerm: body.config?.primaryTerm }); } catch (loadError) { setError(loadError instanceof Error ? loadError.message : '필터 설정을 불러오지 못했습니다.'); } finally { setLoading(false); } }, [targetIndex]);
+  useEffect(() => { const timer = window.setTimeout(() => { void load(); }, 0); return () => window.clearTimeout(timer); }, [load]);
+  const readDraft = () => { const data = new FormData(formRef.current || undefined); return rules.map((rule) => ({ ...rule, kind: 'field' as const, name: String(data.get(`${rule.id}.name`) || ''), field: String(data.get(`${rule.id}.field`) || ''), matchType: String(data.get(`${rule.id}.matchType`) || 'prefix') as SearchFilterRule['matchType'], detectionTerms: String(data.get(`${rule.id}.detectionTerms`) || '').split(',').map((value) => value.trim()), values: String(data.get(`${rule.id}.values`) || '').split(',').map((value) => value.trim()), status: String(data.get(`${rule.id}.status`) || 'active') as 'active' | 'inactive' })); };
+  const save = async () => { if (!window.confirm('저장 시 사이트에 바로 적용됩니다. 저장하시겠습니까?')) return; setSaving(true); setError(''); try { const response = await fetch('/api/v1/admin/search-filter-config', { method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ targetIndex, rules: readDraft(), ...revision }) }); const body = await response.json(); if (!response.ok) throw new Error(body.errorMessage); setRules(body.config.rules || []); setRevision({ seqNo: body.config.seqNo, primaryTerm: body.config.primaryTerm }); } catch (saveError) { setError(saveError instanceof Error ? saveError.message : '저장에 실패했습니다.'); } finally { setSaving(false); } };
+  const runPreview = async () => { setError(''); try { const data = new FormData(formRef.current || undefined); const response = await fetch('/api/v1/admin/search-filter-config', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ targetIndex, query: String(data.get('previewQuery') || ''), rules: readDraft() }) }); const body = await response.json(); if (!response.ok) throw new Error(body.errorMessage); setPreview(body); } catch (previewError) { setError(previewError instanceof Error ? previewError.message : '미리보기에 실패했습니다.'); } };
+  return <AdminLayout email={email}><Head><title>검색필터 관리 | 검색엔진 관리자</title></Head><form ref={formRef} className={styles.container} onSubmit={(event) => event.preventDefault()}>
+    <header className={styles.header}><div><h1>검색필터 관리</h1><p>검색어를 감지해 가격이나 카테고리의 필수 조건을 적용합니다. 점수 부스트는 비즈니스 룰에서 관리합니다.</p></div><div className={styles.actions}><button type="button" disabled={saving} onClick={() => void save()}>{saving ? '저장 중...' : '전체 설정 저장'}</button></div></header>{error && <div className={styles.error}>{error}</div>}
+    <section className={styles.card}><div className={styles.toolbar}><strong>{targetIndex} · {rules.length}개</strong><div><button className={styles.secondary} type="button" onClick={() => setRules([...rules, fieldDraft(targetIndex)])}>＋ 필터</button></div></div>
+      {loading ? <p className={styles.hint}>불러오는 중...</p> : rules.length === 0 ? <p className={styles.hint}>등록된 필터가 없습니다. 설정이 없으면 기존 검색 동작이 유지됩니다.</p> : rules.map((rule) => <div className={styles.ruleRow} key={rule.id}>
+        <input name={`${rule.id}.name`} aria-label="필터명" placeholder="필터명" defaultValue={rule.name}/><input name={`${rule.id}.field`} aria-label="필드" defaultValue={rule.field}/>
+        <select name={`${rule.id}.matchType`} aria-label="필드 조건" defaultValue={rule.matchType}><option value="term">일치</option><option value="prefix">시작값</option><option value="contains">포함됨</option></select><input name={`${rule.id}.detectionTerms`} aria-label="감지어" placeholder="입을 옷, 입는 옷" defaultValue={rule.detectionTerms.join(', ')}/>
+        <select name={`${rule.id}.status`} aria-label="사용 여부" defaultValue={rule.status}><option value="active">사용</option><option value="inactive">중지</option></select><button type="button" onClick={() => setRules(rules.filter((item) => item.id !== rule.id))}>삭제</button>
+        <input name={`${rule.id}.values`} className={styles.full} aria-label="필터 값" placeholder="패션>" defaultValue={rule.values.join(', ')}/></div>)}</section>
+    <section className={styles.card}><div className={styles.toolbar}><strong>저장 전 미리보기</strong><button type="button" onClick={() => void runPreview()}>확인</button></div><input name="previewQuery" className={styles.previewInput} placeholder="예: 결혼식에 입을 옷 5만원대"/>{preview && <div className={styles.previewResult}><p>남은 검색어: <strong>{preview.remainingQuery || '(없음 · 조건 검색)'}</strong></p><p>적용 필터: <strong>{preview.matchedRules.length}개</strong></p>{preview.matchedRules.length > 0 && <pre>{JSON.stringify(preview.matchedRules, null, 2)}</pre>}</div>}</section>
+  </form></AdminLayout>;
+}
